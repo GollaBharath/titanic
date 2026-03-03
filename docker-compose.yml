@@ -1,0 +1,83 @@
+services:
+  # Nginx reverse proxy for virtual host routing
+  nginx:
+    image: nginx:latest
+    container_name: titanic-nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - flask-app
+      - gitea
+    networks:
+      titanic-net:
+        ipv4_address: 10.20.0.10
+
+  # Flask web application (titanic.htb)
+  flask-app:
+    build:
+      context: ./flask-app
+      dockerfile: Dockerfile
+    container_name: titanic-flask
+    environment:
+      - FLASK_ENV=production
+    volumes:
+      # Share tickets directory with target machine for exploitation
+      - tickets-data:/opt/app/tickets
+    networks:
+      titanic-net:
+        ipv4_address: 10.20.0.11
+
+  # Gitea server (dev.titanic.htb)
+  gitea:
+    build:
+      context: ./gitea
+      dockerfile: Dockerfile
+    container_name: titanic-gitea
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+    volumes:
+      - gitea-data:/data
+      - ./gitea/app.ini:/data/gitea/conf/app.ini
+    ports:
+      - "3222:2222" # Gitea SSH (internal port 2222)
+    networks:
+      titanic-net:
+        ipv4_address: 10.20.0.12
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 30s
+
+  # Target machine (SSH server with vulnerabilities)
+  target:
+    build:
+      context: .
+      dockerfile: Dockerfile.target
+    container_name: titanic-target
+    hostname: titanic
+    privileged: true # Needed for cron and full system access
+    ports:
+      - "2223:22" # SSH access - Target machine
+    volumes:
+      - gitea-data:/home/developer/gitea/data:ro # Read-only access to Gitea data
+      - tickets-data:/opt/app/tickets:ro # Read-only access to tickets
+      - ./scripts/identify_images.sh:/opt/scripts/identify_images.sh:ro
+    networks:
+      titanic-net:
+        ipv4_address: 10.20.0.13
+
+networks:
+  titanic-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.20.0.0/16
+
+volumes:
+  gitea-data:
+  tickets-data:

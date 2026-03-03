@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.95 scan initiated Tue Mar  3 15:24:19 2026 as: nmap -p- -&#45;open -sV -sC -oA nmap -T5 -Pn titanic.htb -->
+<nmaprun scanner="nmap" args="nmap -p- -&#45;open -sV -sC -oA nmap -T5 -Pn titanic.htb" start="1772531659" startstr="Tue Mar  3 15:24:19 2026" version="7.95" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="65535" services="1-65535"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<host starttime="1772531659" endtime="1772531820"><status state="up" reason="user-set" reason_ttl="0"/>
+<address addr="127.0.0.1" addrtype="ipv4"/>
+<hostnames>
+<hostname name="titanic.htb" type="user"/>
+<hostname name="localhost" type="PTR"/>
+</hostnames>
+<ports><extraports state="closed" count="65516">
+<extrareasons reason="reset" count="65516" proto="tcp" ports="1-79,81-442,444-630,632-1715,1717-2222,2224-3221,3223-4368,4370-4586,4588-5431,5433-5671,5673-6378,6380-8079,8081-10253,10255-25671,25673-31999,32001-45064,45066-45590,45592-57620,57622-58304,58306-65535"/>
+</extraports>
+<extraports state="filtered" count="4">
+<extrareasons reason="no-response" count="4" proto="tcp" ports="80,443,10254,32000"/>
+</extraports>
+<port protocol="tcp" portid="631"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="ipp" product="CUPS" version="2.4" method="probed" conf="10"><cpe>cpe:/a:apple:cups:2.4</cpe></service><script id="http-title" output="Bad Request - CUPS v2.4.10"><elem key="title">Bad Request - CUPS v2.4.10</elem>
+</script><script id="http-server-header" output="CUPS/2.4 IPP/2.1"><elem>CUPS/2.4 IPP/2.1</elem>
+</script></port>
+<port protocol="tcp" portid="1716"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="tcpwrapped" method="probed" conf="8"/></port>
+<port protocol="tcp" portid="2223"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="ssh" product="OpenSSH" version="8.9p1 Ubuntu 3ubuntu0.13" extrainfo="Ubuntu Linux; protocol 2.0" ostype="Linux" method="probed" conf="10"><cpe>cpe:/a:openbsd:openssh:8.9p1</cpe><cpe>cpe:/o:linux:linux_kernel</cpe></service><script id="ssh-hostkey" output="&#xa;  256 7f:8f:d6:ef:c6:e6:b9:65:14:ee:43:c9:ee:55:52:84 (ECDSA)&#xa;  256 0d:6d:87:94:c3:1f:af:6f:da:18:e7:aa:74:4a:a1:8d (ED25519)"><table>
+<elem key="bits">256</elem>
+<elem key="fingerprint">7f8fd6efc6e6b96514ee43c9ee555284</elem>
+<elem key="key">AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBICRX/BgOcLiiPGrCxz8ce+5Bgw5pAE0PGEHz4owfuOwNHHavki7FENCq4MlYVR8ptCEBgV3RJMMe1rHWo00wUg=</elem>
+<elem key="type">ecdsa-sha2-nistp256</elem>
+</table>
+<table>
+<elem key="bits">256</elem>
+<elem key="fingerprint">0d6d8794c31faf6fda18e7aa744aa18d</elem>
+<elem key="key">AAAAC3NzaC1lZDI1NTE5AAAAIIOZLYnlJh9uR67Qer+Cx3ugJ87wIGOeeY0/m1aptaxN</elem>
+<elem key="type">ssh-ed25519</elem>
+</table>
+</script></port>
+<port protocol="tcp" portid="3222"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="ssh" product="Golang x/crypto/ssh server" extrainfo="protocol 2.0" method="probed" conf="10"><cpe>cpe:/a:golang:go</cpe></service><script id="ssh-hostkey" output="&#xa;  4096 b2:4c:08:e1:a7:8e:6a:22:cd:c7:e4:b5:7a:61:ee:73 (RSA)"><table>
+<elem key="bits">4096</elem>
+<elem key="fingerprint">b24c08e1a78e6a22cdc7e4b57a61ee73</elem>
+<elem key="key">AAAAB3NzaC1yc2EAAAADAQABAAACAQC6E2Sp7agVNmEQzI+gf+wQEKQY0Fsu9yEuF06u0Y7mMCsYB8Bl8ZycUdV6TulQxbMjs/h2lCkF2g7Yg3jzTIqGHCVOc5bPj8lztR1KuPt/0osVLrHWPiCrzb5cPKvBsGXHceVL9S/aK3OO/UN39D7fvGc7VAANzLK7E5jJCzksdSlIoPLdTYCjV2LER69yQEKW+mmKodkAJdZEeFdRm7GrZkt7lPzadL+F0rhgVoaGNTenBZQiZ1Y4e4/1I2uIuXfKKrjWrOI/ZtfQ57j6VyEPZm6fbUS3EWqfJcPS3o9d9JX9Du/x/mst5bJ9628PKmuDMeOCLfZzpio+sxj0g0h2oRO0jnOTbnDRVDaoEzO/nn+fZ9JTYe/fmPbj4S2hGPbuRiADl2n9cKTxXcRlTjR0gLGdpoH0EBpkQ57zW7XgBAYijsqt/dZOZvwCKarPA2Jg5cUEssbdbw1egApAY6L5YWLwAZJNPlHIcNGZCzjYC/0CiVb3St9EbB0LQA9/6ft3joVA5ec5ikaPzRJ9pkYy6zQRSWKxKhYuBYtbmM7ehSBkxe47TnpopA7Zvuli3ZeFUYnMcq11Y4Uim+zf8uR1jGsFUvIDi0zPRVketuhY6ZJuW/u1Y49Yolh+qXE2biPCd5+2tHW6CHM0qHq7GaF9/ZRMPErfQpr4zE/+RVLnXw==</elem>
+<elem key="type">ssh-rsa</elem>
+</table>
+</script></port>
+<port protocol="tcp" portid="4369"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="epmd" product="Erlang Port Mapper Daemon" method="probed" conf="10"/><script id="epmd-info" output="&#xa;  epmd_port: 4369&#xa;  nodes: &#xa;    rabbit: 25672"><elem key="epmd_port">4369</elem>
+<table key="nodes">
+<elem key="rabbit">25672</elem>
+</table>
+</script></port>
+<port protocol="tcp" portid="4587"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="http" product="Node.js Express framework" method="probed" conf="10"><cpe>cpe:/a:nodejs:node.js</cpe></service><script id="http-title" output="Error"><elem key="title">Error</elem>
+</script></port>
+<port protocol="tcp" portid="5432"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="postgresql" product="PostgreSQL DB" version="9.6.0 or later" method="probed" conf="10"><cpe>cpe:/a:postgresql:postgresql</cpe></service><script id="ssl-date" output="TLS randomness does not represent time"></script><script id="ssl-cert" output="Subject: commonName=arena11.ded&#xa;Subject Alternative Name: DNS:arena11.ded&#xa;Not valid before: 2025-10-17T16:26:39&#xa;Not valid after:  2035-10-15T16:26:39"><table key="subject">
+<elem key="commonName">arena11.ded</elem>
+</table>
+<table key="issuer">
+<elem key="commonName">arena11.ded</elem>
+</table>
+<table key="pubkey">
+<elem key="type">rsa</elem>
+<elem key="bits">2048</elem>
+<elem key="modulus">E8DCEC04D3850335C63ECC48F9297B1BBEEB20A977FDD8F9B7E183E24DF3136E225D2509F707CF2C22359FCBAB76428AAE2FA605D1DA51504621B647072EDEF011F9B0BA0BE8A30AF1F38C24DEA051E89A3B30D84103D24F8CF49AC94FF857EAC709D47A5593954BD51F720E33DA665F9FCA90422EB5C5AF2D5244D537DD4B4B587EE16597BC1BC6B455EFCED2B439AA79DD3C6D4AC22B70314A3A75E8EFFE5FFCD785CD5F759753078012DABBA19179F94141EF68EA6D7200E303C83E7C784B39235D01A50DA3E6B159F9F366A950914C957F27869329D69AE91562A208131A4C6EFACA0DC9C74E90E018553487D08B5C9704F14A8F7FAF2A98CEA2AA10A1F3</elem>
+<elem key="exponent">65537</elem>
+</table>
+<table key="extensions">
+<table>
+<elem key="name">X509v3 Basic Constraints</elem>
+<elem key="value">CA:FALSE</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Alternative Name</elem>
+<elem key="value">DNS:arena11.ded</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Key Identifier</elem>
+<elem key="value">38:E2:BB:42:2D:9A:80:11:00:4E:BF:09:7E:FD:29:AA:51:5E:D1:EE</elem>
+</table>
+</table>
+<elem key="sig_algo">sha256WithRSAEncryption</elem>
+<table key="validity">
+<elem key="notBefore">2025-10-17T16:26:39</elem>
+<elem key="notAfter">2035-10-15T16:26:39</elem>
+</table>
+<elem key="md5">941a80381712206a1da16c9c5c928b86</elem>
+<elem key="sha1">8b0cc2773a0934be3bb5ff557d52aaebea373447</elem>
+<elem key="pem">-&#45;&#45;&#45;&#45;BEGIN CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;MIIC/jCCAeagAwIBAgIUI8hnnxwgYawa5fQMimsXc2egjm8wDQYJKoZIhvcNAQEL&#xa;BQAwFjEUMBIGA1UEAwwLYXJlbmExMS5kZWQwHhcNMjUxMDE3MTYyNjM5WhcNMzUx&#xa;MDE1MTYyNjM5WjAWMRQwEgYDVQQDDAthcmVuYTExLmRlZDCCASIwDQYJKoZIhvcN&#xa;AQEBBQADggEPADCCAQoCggEBAOjc7ATThQM1xj7MSPkpexu+6yCpd/3Y+bfhg+JN&#xa;8xNuIl0lCfcHzywiNZ/Lq3ZCiq4vpgXR2lFQRiG2Rwcu3vAR+bC6C+ijCvHzjCTe&#xa;oFHomjsw2EED0k+M9JrJT/hX6scJ1HpVk5VL1R9yDjPaZl+fypBCLrXFry1SRNU3&#xa;3UtLWH7hZZe8G8a0Ve/O0rQ5qnndPG1KwitwMUo6dejv/l/814XNX3WXUweAEtq7&#xa;oZF5+UFB72jqbXIA4wPIPnx4SzkjXQGlDaPmsVn582apUJFMlX8nhpMp1prpFWKi&#xa;CBMaTG76yg3Jx06Q4BhVNIfQi1yXBPFKj3+vKpjOoqoQofMCAwEAAaNEMEIwCQYD&#xa;VR0TBAIwADAWBgNVHREEDzANggthcmVuYTExLmRlZDAdBgNVHQ4EFgQUOOK7Qi2a&#xa;gBEATr8Jfv0pqlFe0e4wDQYJKoZIhvcNAQELBQADggEBAJO2u0l9EByYoma2y06D&#xa;bOdUMPwC61x1bwq926aA7+hu/CER9aWCa0rU5agcYDiLf0t+8063PD+mlZUBCStp&#xa;TVvPfQvXd9EWt6xpaGNR+CZFVx325eAhO9v2Mg3rD7d0X3h25x4kxrg2f4f5ehlc&#xa;+mvIGY2DFgG4jEQFmGVaquFuUXmOHJHjzj8I1nqmhCGxmuOLVCdTDeRFF5X9QEdk&#xa;PagYIzNYkq4v+PBmIiFwnuPXHlC6ae4qzGLpsQd9gWzDwx5TAkKPtecJbrZTKhiq&#xa;+gY5WYArM+nn+rA432V+p+/PtJInTNcQlBTqjl2eEze4GEllVeEHc8TvGKUiNYqa&#xa;Xmw=&#xa;-&#45;&#45;&#45;&#45;END CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;</elem>
+</script></port>
+<port protocol="tcp" portid="5672"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="amqp" product="RabbitMQ" version="4.2.4" extrainfo="0-9" method="probed" conf="10"/><script id="amqp-info" output="&#xa;  capabilities: &#xa;    publisher_confirms: YES&#xa;    exchange_exchange_bindings: YES&#xa;    basic.nack: YES&#xa;    consumer_cancel_notify: YES&#xa;    connection.blocked: YES&#xa;    consumer_priorities: YES&#xa;    authentication_failure_close: YES&#xa;    per_consumer_qos: YES&#xa;    direct_reply_to: YES&#xa;  cluster_name: rabbit@arena11.ded&#xa;  copyright: Copyright (c) 2007-2026 Broadcom Inc and/or its subsidiaries&#xa;  information: Licensed under the MPL 2.0. Website: https://rabbitmq.com&#xa;  platform: Erlang/OTP 27.3.4.1&#xa;  product: RabbitMQ&#xa;  version: 4.2.4&#xa;  mechanisms: AMQPLAIN ANONYMOUS PLAIN&#xa;  locales: en_US&#xa;"/></port>
+<port protocol="tcp" portid="6379"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="redis" product="Redis key-value store" version="8.0.2" method="probed" conf="10"><cpe>cpe:/a:redislabs:redis:8.0.2</cpe></service></port>
+<port protocol="tcp" portid="8080"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="http" product="nginx" version="1.29.5" method="probed" conf="10"><cpe>cpe:/a:igor_sysoev:nginx:1.29.5</cpe></service><script id="http-server-header" output="nginx/1.29.5"><elem>nginx/1.29.5</elem>
+</script><script id="http-open-proxy" output="Proxy might be redirecting requests"/><script id="http-title" output="RMS Titanic - Book Your Journey"><elem key="title">RMS Titanic - Book Your Journey</elem>
+</script></port>
+<port protocol="tcp" portid="25672"><state state="open" reason="syn-ack" reason_ttl="64"/></port>
+<port protocol="tcp" portid="45065"><state state="open" reason="syn-ack" reason_ttl="64"/></port>
+<port protocol="tcp" portid="45591"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="http" product="Node.js Express framework" method="probed" conf="10"><cpe>cpe:/a:nodejs:node.js</cpe></service><script id="http-title" output="Site doesn&apos;t have a title (application/json; charset=utf-8)."></script></port>
+<port protocol="tcp" portid="57621"><state state="open" reason="syn-ack" reason_ttl="64"/></port>
+<port protocol="tcp" portid="58305"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="unknown" servicefp="SF-Port58305-TCP:V=7.95%I=7%D=3/3%Time=69A6AFCE%P=x86_64-pc-linux-gnu%r(NULL,22,&quot;{\&quot;type\&quot;:\&quot;Tier1\&quot;,\&quot;version\&quot;:\&quot;1\.0\&quot;}\r\n&quot;)%r(GenericLines,22,&quot;{\&quot;type\&quot;:\&quot;Tier1\&quot;,\&quot;version\&quot;:\&quot;1\.0\&quot;}\r\n&quot;)%r(HTTPOptions,22,&quot;{\&quot;type\&quot;:\&quot;Tier1\&quot;,\&quot;version\&quot;:\&quot;1\.0\&quot;}\r\n&quot;)%r(ms-sql-s,22,&quot;{\&quot;type\&quot;:\&quot;Tier1\&quot;,\&quot;version\&quot;:\&quot;1\.0\&quot;}\r\n&quot;);" method="table" conf="3"/><script id="fingerprint-strings" output="&#xa;  GenericLines, HTTPOptions, NULL, ms-sql-s: &#xa;    {&quot;type&quot;:&quot;Tier1&quot;,&quot;version&quot;:&quot;1.0&quot;}"><elem key="GenericLines, HTTPOptions, NULL, ms-sql-s">&#xa;    {&quot;type&quot;:&quot;Tier1&quot;,&quot;version&quot;:&quot;1.0&quot;}</elem>
+</script></port>
+</ports>
+<times srtt="6" rttvar="0" to="50000"/>
+</host>
+<runstats><finished time="1772531820" timestr="Tue Mar  3 15:27:00 2026" summary="Nmap done at Tue Mar  3 15:27:00 2026; 1 IP address (1 host up) scanned in 160.94 seconds" elapsed="160.94" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>
