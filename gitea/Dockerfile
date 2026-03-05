@@ -1,7 +1,10 @@
 FROM gitea/gitea:1.22.1
 
-# Expose Gitea port
-EXPOSE 3000 22
+# Copy custom app.ini configuration
+COPY app.ini /data/gitea/conf/app.ini
+
+# Expose Gitea ports
+EXPOSE 3000 2222
 
 # Volume for Gitea data
 VOLUME ["/data"]

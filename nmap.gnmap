@@ -1,4 +1,0 @@
-# Nmap 7.95 scan initiated Tue Mar  3 15:24:19 2026 as: nmap -p- --open -sV -sC -oA nmap -T5 -Pn titanic.htb
-Host: 127.0.0.1 (localhost)	Status: Up
-Host: 127.0.0.1 (localhost)	Ports: 631/open/tcp//ipp//CUPS 2.4/, 1716/open/tcp//tcpwrapped///, 2223/open/tcp//ssh//OpenSSH 8.9p1 Ubuntu 3ubuntu0.13 (Ubuntu Linux; protocol 2.0)/, 3222/open/tcp//ssh//Golang x|crypto|ssh server (protocol 2.0)/, 4369/open/tcp//epmd//Erlang Port Mapper Daemon/, 4587/open/tcp//http//Node.js Express framework/, 5432/open/tcp//postgresql//PostgreSQL DB 9.6.0 or later/, 5672/open/tcp//amqp//RabbitMQ 4.2.4 (0-9)/, 6379/open/tcp//redis//Redis key-value store 8.0.2/, 8080/open/tcp//http//nginx 1.29.5/, 25672/open/tcp/////, 45065/open/tcp/////, 45591/open/tcp//http//Node.js Express framework/, 57621/open/tcp/////, 58305/open/tcp//unknown///
-# Nmap done at Tue Mar  3 15:27:00 2026 -- 1 IP address (1 host up) scanned in 160.94 seconds

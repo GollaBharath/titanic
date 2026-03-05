@@ -3,7 +3,7 @@ FROM ubuntu:22.04
 # Prevent interactive prompts during package installation
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install necessary packages
+# Install necessary packages (SSH, web server, Python, nginx, etc.)
 RUN apt-get update && apt-get install -y \
     openssh-server \
     sudo \
@@ -20,6 +20,9 @@ RUN apt-get update && apt-get install -y \
     libjpeg-dev \
     libpng-dev \
     libgif-dev \
+    nginx \
+    python3.11 \
+    python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
 # Install ImageMagick 7.1.1-35 (vulnerable version for CVE-2024-41817)
@@ -35,14 +38,22 @@ RUN cd /tmp && \
 
 # Create developer user with specific password hash
 # Password: 25282528 (from the writeup)
-# Using PBKDF2-SHA256 hash from Gitea
 RUN useradd -m -s /bin/bash developer && \
     echo 'developer:25282528' | chpasswd
 
 # Create directory structure
 RUN mkdir -p /opt/app/static/assets/images && \
+    mkdir -p /opt/app/tickets && \
+    mkdir -p /opt/app/templates && \
     mkdir -p /opt/scripts && \
     mkdir -p /home/developer/gitea/data
+
+# Copy Flask application files
+COPY flask-app/requirements.txt /opt/app/
+RUN pip3 install --no-cache-dir -r /opt/app/requirements.txt
+
+COPY flask-app/app.py /opt/app/
+COPY flask-app/templates/ /opt/app/templates/
 
 # Create the vulnerable script
 COPY scripts/identify_images.sh /opt/scripts/identify_images.sh
@@ -77,10 +88,13 @@ RUN echo "d8b1aece4bc98dac1b3cb90946c7647e" > /home/developer/user.txt && \
 RUN echo "95e72bf418462d4519f4dc695236ec2e" > /root/root.txt && \
     chmod 600 /root/root.txt
 
+# Copy nginx configuration
+COPY nginx/nginx-combined.conf /etc/nginx/nginx-combined.conf
+
 # Start script
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
-EXPOSE 22
+EXPOSE 22 80
 
 CMD ["/start.sh"]

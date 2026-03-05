@@ -18,12 +18,49 @@ This is a complete recreation of the Titanic HackTheBox machine, designed to run
 
 ## Architecture
 
-The lab consists of 4 Docker containers:
+The lab consists of 2 Docker containers:
 
-1. **nginx** - Reverse proxy for virtual host routing (port 80)
-2. **flask-app** - Vulnerable Flask web application (titanic.htb)
-3. **gitea** - Git repository server (dev.titanic.htb)
-4. **target** - SSH server with privilege escalation vulnerability (port 2222)
+1. **gitea** - Git repository server (dev.titanic.htb) with SSH access
+2. **combined** - Combined container with:
+   - nginx - Reverse proxy for virtual host routing
+   - flask-app - Vulnerable Flask web application (titanic.htb)
+   - target - SSH server with privilege escalation vulnerability
+
+## Deployment Options
+
+### Local Testing (Docker Compose)
+
+Quick and easy deployment using docker-compose:
+
+```bash
+docker compose up -d
+```
+
+### Production Deployment
+
+The lab consists of 2 self-contained Docker images ready for any container platform:
+
+**Quick Guide:** See [BUILD_AND_PUSH.md](BUILD_AND_PUSH.md) for step-by-step instructions.
+
+1. **Build the images:**
+
+   ```bash
+   docker build -t titanic-gitea:latest ./gitea
+   docker build -t titanic-combined:latest ./combined
+   ```
+
+2. **Push to registry:**
+
+   ```bash
+   docker tag titanic-gitea:latest your-registry/titanic-gitea:latest
+   docker tag titanic-combined:latest your-registry/titanic-combined:latest
+   docker push your-registry/titanic-gitea:latest
+   docker push your-registry/titanic-combined:latest
+   ```
+
+3. **Platform Configuration:** Provide [RUNTIME_REQUIREMENTS.md](RUNTIME_REQUIREMENTS.md) to the platform
+
+**Manual Docker Commands:** See [MANUAL_BUILD.md](MANUAL_BUILD.md) for manual deployment.
 
 ## Prerequisites
 
