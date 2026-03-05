@@ -95,6 +95,8 @@ COPY nginx/nginx-combined.conf /etc/nginx/nginx-combined.conf
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
-EXPOSE 22 80
+# Only expose port 80 (HTTP). SSH on port 22 will be available but not declared
+# as EXPOSE to avoid security policy violations in hosted platforms
+EXPOSE 80
 
 CMD ["/start.sh"]
