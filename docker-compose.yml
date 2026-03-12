@@ -31,7 +31,7 @@ services:
     hostname: titanic
     privileged: true # Needed for cron and full system access
     ports:
-      - "8080:80" # Web access (nginx)
+      - "80:80" # Web access (nginx)
       - "2223:22" # SSH access
     volumes:
       - gitea-data:/home/developer/gitea/data:ro # Read-only access to Gitea data
